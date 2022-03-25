@@ -1,4 +1,5 @@
-import {PrimaryGeneratedColumn, Entity, Column, ManyToOne, OneToMany, JoinColumn} from 'typeorm'
+import {PrimaryGeneratedColumn, Entity, Column, ManyToOne, OneToMany, JoinColumn, OneToOne} from 'typeorm'
+import { Cart_item } from './cart_item.entity'
 import { Category } from './category.entity'
 import { Photo } from './photo.entity'
 
@@ -26,4 +27,6 @@ export class Book{
     category: Category
     @OneToMany(()=> Photo, photo => photo.book)
     photos: Photo[]
+    @OneToOne(()=>Cart_item,cart_item=>cart_item.book)
+    cart_item: Cart_item
 }
